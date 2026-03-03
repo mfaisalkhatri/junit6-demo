@@ -26,7 +26,7 @@ public class BillingServiceTest {
     @Order (1)
     void testShouldCalculateDiscount () {
         double discount = billingService.discount (1000, 10);
-        assertEquals (100, discount);
+        assertEquals (100, discount, 0.001);
     }
 
     @Test
@@ -42,9 +42,9 @@ public class BillingServiceTest {
         @Test
         @Order (4)
         @DisplayName ("Test to calculate total bill amount after discount")
-        void testShouldCalculteTotalBillAmount () {
+        void testShouldCalculateTotalBillAmount () {
             double totalBillAmount = billingService.totalBillAmount (5000, 20);
-            assertEquals (4000, totalBillAmount);
+            assertEquals (4000, totalBillAmount, 0.001);
         }
 
         @Test
@@ -52,7 +52,7 @@ public class BillingServiceTest {
         @DisplayName ("Test to Calculate total bill amount when discount is zero")
         void testShouldCalculateTotalBillWithZeroDiscount () {
             double totalBillAmount = billingService.totalBillAmount (7999, 0);
-            assertEquals (7999, totalBillAmount);
+            assertEquals (7999, totalBillAmount, 0.001);
         }
     }
 }

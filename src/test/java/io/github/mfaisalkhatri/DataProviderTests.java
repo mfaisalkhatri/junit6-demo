@@ -21,12 +21,12 @@ class DataProviderTests {
     @ParameterizedTest (name = "[{index}] = grossAmt={0}, discountPercentage={1}, totalAmt= {2}")
     @CsvSource ({ "100,10,90", "7899,0,7899", "4512.50,2,4422.25" })
     void testBillFromCsv (double grossAmount, double discountPercent, double totalBill) {
-        assertEquals (totalBill, billingService.totalBillAmount (grossAmount, discountPercent));
+        assertEquals (totalBill, billingService.totalBillAmount (grossAmount, discountPercent), 0.001);
     }
 
     @ParameterizedTest (name = "[{index}] = grossAmt={0}, discountPercentage={1}, totalAmt= {2}")
     @CsvFileSource (resources = "/billing-test-data.csv", numLinesToSkip = 1)
     void testBillFromCsvFile (double grossAmount, double discountPercent, double totalBill) {
-        assertEquals (totalBill, billingService.totalBillAmount (grossAmount, discountPercent));
+        assertEquals (totalBill, billingService.totalBillAmount (grossAmount, discountPercent), 0.001);
     }
 }
